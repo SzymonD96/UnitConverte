@@ -1,0 +1,81 @@
+body {
+    font-family: 'Inter', sans-serif;
+    width: 800px;
+    background: whitesmoke;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 33px;
+    font-weight: 800;
+}
+
+h2 {
+    color: #5A537B;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+p {
+    color: #353535;
+    font-weight: 400;
+    font-size: 16;
+}
+
+#head-line {
+    background: #6943FF;
+    color: white;
+    height: 300px;
+    padding: 35px 0;
+    padding-bottom: 50px;
+}
+
+#number-input {
+    -webkit-appearance: none;
+    border: 2px solid #B295FF;
+    border-radius: 5px;
+    width: 150px;
+    height: 100px;
+    background: none;
+    margin: 30px;
+    text-align: center;
+    color: inherit;
+    font: inherit;
+    font-size: 50px;
+    font-weight: 800;
+} 
+
+input:focus {
+    outline: 1px solid #B295FF;
+}
+
+#converte-btn {
+    width: 150px;
+    height: 50px;
+    background: white;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#display-space {
+    background: #F4F4F4;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.converted-unite-display {
+    background: white;
+    height: 110px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
