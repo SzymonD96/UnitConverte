@@ -1,32 +1,60 @@
 
 const converBtn = document.getElementById("converte-btn");
 const numberInput = document.getElementById("number-input");
-const lengthDisplay = document.getElementById("length-display");
-const volumeDisplay = document.getElementById("volume-display");
-const massDisplay = document.getElementById("mass-display");
 
-converBtn.addEventListener("click", function(){ converUnit((numberInput.value)) });
+const displaySpace = document.getElementById("display-space");
 
-function converUnit(number) {
-    
-    let lenghtFeet = (number * 3.281).toFixed(3);
-    let lenghtMeter = (number / 3.281).toFixed(3);
-    let volumeGallons = (number * 0.264).toFixed(3);
-    let volumeLiters = (number / 0.264).toFixed(3);
-    let massPounds = (number * 2.204).toFixed(3);
-    let massKilos = (number / 2.204).toFixed(3);
+const lengthCheck = document.getElementById("length-check");
+const volumeCheck = document.getElementById("volume-check");
+const massCheck = document.getElementById("mass-check");
 
-    lengthDisplay.textContent = `
-        ${numberInput.value} meters = ${lenghtFeet} feet | ${numberInput.value} feet = ${lenghtMeter} meters
+let converLength = false;
+let converVolume = false;
+let converMass = false;
+
+const conversionMatrix = [
+    {
+        name: "Length (Meeter/Feet)",
+        conversionRate: 3.281
+    },
+    {
+        name: "Volume (Liters/Gallons)",
+        conversionRate: 0.264
+    },
+    {
+        name: "Mass (Kilos/Pounds)",
+        conversionRate: 2.204
+    },
+];
+
+lengthCheck.addEventListener("click", function() {
+    converLength = !converLength;
+});
+volumeCheck.addEventListener("click", function() {
+    converVolume = !converVolume;
+});
+massCheck.addEventListener("click", function() {
+    converMass = !converMass;
+});
+
+converBtn.addEventListener("click", function(){
+    displaySpace.innerHTML = ""
+    if(converLength) {
+        convert(conversionMatrix[0])
+    }
+    if(converVolume) {
+        convert(conversionMatrix[1])
+    }
+    if(converMass) {
+        convert(conversionMatrix[2])
+    }
+ });
+
+function convert(unit) {
+    displaySpace.innerHTML += `
+        <div class="converted-unite-display">
+        <h2>${unit.name}</h2>
+        <p id="length-display">${numberInput.value} meters = ${(numberInput.value * unit.conversionRate).toFixed(3)} feet | ${numberInput.value} feet = ${(numberInput.value * (1 / unit.conversionRate)).toFixed(3)} meters</p>
+        </div>
     `;
-
-    volumeDisplay.textContent = `
-        ${numberInput.value} liters = ${volumeGallons} gallons | ${numberInput.value} gallons = ${volumeLiters} liters
-    `;
-
-    massDisplay.textContent = `
-    ${numberInput.value} kilos = ${massPounds} pounds | ${numberInput.value} pounds = ${massKilos} kilos
-    `;
-
-    
-}   
+}
